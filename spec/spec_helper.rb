@@ -3,7 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'simplecov'
 SimpleCov.start 'rails'
 require File.expand_path("../../config/environment", __FILE__)
-#require 'database_cleaner'
+require 'database_cleaner'
 require 'factory_girl'
 require 'rspec/rails'
 require 'rspec/autorun'
@@ -13,13 +13,13 @@ FactoryGirl.find_definitions
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
-  #config.before(:each) do
-  #  DatabaseCleaner.start
-  #end
-  #
-  #config.after(:each) do
-  #  DatabaseCleaner.clean
-  #end
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 
   # ## Mock Framework
   #
